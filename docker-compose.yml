@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  dbump:
+    container_name: dbump
+    image: dbump:latest
+    restart: always
+    tty: true
+    environment:
+      TOKEN: <TOKEN>

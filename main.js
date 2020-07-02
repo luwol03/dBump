@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client(); 
 
-const settings = require('./settings.json');
 bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}`);
 });
@@ -21,4 +20,4 @@ bot.on('message', (msg) => {
 	msg.channel.send(embed);
 });
 	
-bot.login(settings.token);
+bot.login(process.env.TOKEN);
