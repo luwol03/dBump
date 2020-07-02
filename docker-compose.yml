@@ -7,3 +7,4 @@ services:
     tty: true
     environment:
       TOKEN: <TOKEN>
+      BUMP_TIME: <TIME>
