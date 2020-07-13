@@ -3,6 +3,8 @@ const bot = new Discord.Client();
 
 const bumpMinutes = process.env.BUMP_TIME || 120;
 
+let bumps = [];
+
 bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}`);
 });
@@ -14,8 +16,8 @@ bot.on('message', (msg) => {
 
 	switch(cmd) {
 		case 'bump':
-			if(Date.now() - bot.lastBump <= bumpMinutes * 1000 * 60) {
-				let minutes = new Date(bot.lastBump);
+			if(Date.now() - bumps[msg.guild.id] <= bumpMinutes * 1000 * 60) {
+				let minutes = new Date(bumps[msg.guild.id]);
 				minutes.setMinutes(minutes.getMinutes() + bumpMinutes);
 				return msg.channel.send(`Du kannst nur alle ${bumpMinutes} Minuten bumpen. Bitte Versuchen sie es in ${Math.round(((minutes - new Date())/1000)/60)} Minuten erneut.`);
 			}
@@ -24,7 +26,7 @@ bot.on('message', (msg) => {
 				.setURL("https://unleashed-design.de")
 				.setTimestamp()
 				.setDescription(`${msg.author.toString()}\nBump erfolgreich👍`);
-			bot.lastBump = new Date();
+			bumps[msg.guild.id] = new Date();
 			msg.channel.send(embed);
 			break;
 

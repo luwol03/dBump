@@ -1,9 +1,9 @@
 {
   "name": "dbumpbot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple bot that you are not unemployed (-;",
-  "main": "index.js",
-  "author": "perclf",
+  "main": "main.js",
+  "author": "luwol03",
   "license": "ISC",
   "dependencies": {
     "discord": "^0.8.2",
@@ -11,6 +11,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/codecalf/dBump.git"
+    "url": "https://github.com/luwol03/dBump"
   }
 }
