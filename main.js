@@ -7,6 +7,26 @@ let bumps = [];
 
 bot.on('ready', () => {
 	console.log(`Logged in as ${bot.user.tag}`);
+
+	let presences = [
+		'Developed by wolflu#5506',
+		'https://github.com/luwol03/dbump'
+	];
+
+	let setPresence = async (i) => {
+		bot.user.setPresence({
+			status: 'online',
+			activity: {
+				name: presences[i],
+				type: 'PLAYING'
+			}
+		});
+	}
+
+
+	bot.setInterval(() => setPresence(1), 20000);
+	bot.setInterval(() => setPresence(0), 40000);
+	setPresence(0)
 });
 
 bot.on('message', (msg) => {
@@ -16,6 +36,9 @@ bot.on('message', (msg) => {
 
 	switch(cmd) {
 		case 'bump':
+			if(msg.guild === null) {
+				return msg.channel.send(`:x: Error: Command \`${cmd}\` only available on a server.`)
+			}
 			if(Date.now() - bumps[msg.guild.id] <= bumpMinutes * 1000 * 60) {
 				let minutes = new Date(bumps[msg.guild.id]);
 				minutes.setMinutes(minutes.getMinutes() + bumpMinutes);
