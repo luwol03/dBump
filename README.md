@@ -1,3 +1,5 @@
+# This project was archieved, because it was just a fun project for a discord server.
+
 # dBump
 Discord Js bot that adds a !d Bumb command without any list.
 
